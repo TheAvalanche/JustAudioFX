@@ -106,6 +106,7 @@ void JustDelayAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBl
     // Use this method as the place to do any pre-playback
     // initialisation that you need..
 
+    // init circular buffers for delay
     for (int i = 0; i < DELAY_BUFFERS; i++) {
         delayBuffer[i].init(sampleRate * DELAY_BUFFER_SIZE_SEC);
     }
@@ -174,18 +175,17 @@ void JustDelayAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, ju
         // ..do something to the data...
 
         for (int i = 0; i < numberOfSamples; ++i) {
+            // read input signal
             const float input = channelData[i];
 
-            // read delay
-            float yn = delayBuffer[channel].read(*delayTimeMsParam * sampleRate / 1000);
+            // read delayed signal
+            float delay = delayBuffer[channel].read(*delayTimeMsParam * sampleRate / 1000);
 
             // create input for delay line and write to buffer
-            float dn = input + (*feedbackParam / 100) * yn;
-            delayBuffer[channel].write(dn);
+            delayBuffer[channel].write(input + (*feedbackParam / 100) * delay);
 
-            // output
-            float output = (1 - (*mixParam / 100)) * input + (*mixParam / 100) * yn;
-            channelData[i] = output;
+            // write output mix
+            channelData[i] = (1 - (*mixParam / 100)) * input + (*mixParam / 100) * delay;
 
         }
     }

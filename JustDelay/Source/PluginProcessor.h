@@ -9,9 +9,11 @@
 #pragma once
 
 #include <JuceHeader.h>
-#include "CircularBuffer.h"
+#include "CircularBufferOptimized.h"
 
+// 1 for MONO, 2 for STEREO
 const unsigned int DELAY_BUFFERS = 2;
+// maximum number of seconds for delay
 const unsigned int DELAY_BUFFER_SIZE_SEC = 2;
 
 //==============================================================================
@@ -59,7 +61,7 @@ public:
 
 private:
 
-    CircularBuffer delayBuffer[DELAY_BUFFERS];
+    CircularBufferOptimized delayBuffer[DELAY_BUFFERS];
 
     juce::AudioProcessorValueTreeState parameters;
     juce::UndoManager undoManager;

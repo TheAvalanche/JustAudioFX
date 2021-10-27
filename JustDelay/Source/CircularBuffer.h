@@ -16,5 +16,5 @@ public:
 private:
 	std::unique_ptr<float[]> buffer = nullptr;
 	unsigned int writeIndex = 0;
-	unsigned int bufferLength = 1024;
+	unsigned int bufferLength = 1024; //default value
 };
