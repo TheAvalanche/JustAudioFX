@@ -7,6 +7,14 @@
               pluginVST3Category="Delay" pluginRTASCategory="16" pluginAAXCategory="16">
   <MAINGROUP id="qopsy2" name="JustDelay">
     <GROUP id="{C6685B3B-7905-8796-5BE7-1B5508F098BD}" name="Source">
+      <FILE id="icmEr9" name="CircularBuffer.cpp" compile="1" resource="0"
+            file="Source/CircularBuffer.cpp"/>
+      <FILE id="k5vFSI" name="CircularBuffer.h" compile="0" resource="0"
+            file="Source/CircularBuffer.h"/>
+      <FILE id="NfM19h" name="CircularBufferOptimized.cpp" compile="1" resource="0"
+            file="Source/CircularBufferOptimized.cpp"/>
+      <FILE id="fS3qPp" name="CircularBufferOptimized.h" compile="0" resource="0"
+            file="Source/CircularBufferOptimized.h"/>
       <FILE id="PNCTqk" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
       <FILE id="BPTgCe" name="PluginProcessor.h" compile="0" resource="0"
