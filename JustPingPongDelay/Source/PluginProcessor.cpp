@@ -10,7 +10,7 @@
 #include "PluginEditor.h"
 
 //==============================================================================
-JustDelayAudioProcessor::JustDelayAudioProcessor()
+JustPingPongDelayAudioProcessor::JustPingPongDelayAudioProcessor()
 #ifndef JucePlugin_PreferredChannelConfigurations
      : AudioProcessor (BusesProperties()
                      #if ! JucePlugin_IsMidiEffect
@@ -34,17 +34,17 @@ JustDelayAudioProcessor::JustDelayAudioProcessor()
     mixParam = parameters.getRawParameterValue("mix");
 }
 
-JustDelayAudioProcessor::~JustDelayAudioProcessor()
+JustPingPongDelayAudioProcessor::~JustPingPongDelayAudioProcessor()
 {
 }
 
 //==============================================================================
-const juce::String JustDelayAudioProcessor::getName() const
+const juce::String JustPingPongDelayAudioProcessor::getName() const
 {
     return JucePlugin_Name;
 }
 
-bool JustDelayAudioProcessor::acceptsMidi() const
+bool JustPingPongDelayAudioProcessor::acceptsMidi() const
 {
    #if JucePlugin_WantsMidiInput
     return true;
@@ -53,7 +53,7 @@ bool JustDelayAudioProcessor::acceptsMidi() const
    #endif
 }
 
-bool JustDelayAudioProcessor::producesMidi() const
+bool JustPingPongDelayAudioProcessor::producesMidi() const
 {
    #if JucePlugin_ProducesMidiOutput
     return true;
@@ -62,7 +62,7 @@ bool JustDelayAudioProcessor::producesMidi() const
    #endif
 }
 
-bool JustDelayAudioProcessor::isMidiEffect() const
+bool JustPingPongDelayAudioProcessor::isMidiEffect() const
 {
    #if JucePlugin_IsMidiEffect
     return true;
@@ -71,37 +71,37 @@ bool JustDelayAudioProcessor::isMidiEffect() const
    #endif
 }
 
-double JustDelayAudioProcessor::getTailLengthSeconds() const
+double JustPingPongDelayAudioProcessor::getTailLengthSeconds() const
 {
     return 5.0;
 }
 
-int JustDelayAudioProcessor::getNumPrograms()
+int JustPingPongDelayAudioProcessor::getNumPrograms()
 {
     return 1;   // NB: some hosts don't cope very well if you tell them there are 0 programs,
                 // so this should be at least 1, even if you're not really implementing programs.
 }
 
-int JustDelayAudioProcessor::getCurrentProgram()
+int JustPingPongDelayAudioProcessor::getCurrentProgram()
 {
     return 0;
 }
 
-void JustDelayAudioProcessor::setCurrentProgram (int index)
+void JustPingPongDelayAudioProcessor::setCurrentProgram (int index)
 {
 }
 
-const juce::String JustDelayAudioProcessor::getProgramName (int index)
+const juce::String JustPingPongDelayAudioProcessor::getProgramName (int index)
 {
     return {};
 }
 
-void JustDelayAudioProcessor::changeProgramName (int index, const juce::String& newName)
+void JustPingPongDelayAudioProcessor::changeProgramName (int index, const juce::String& newName)
 {
 }
 
 //==============================================================================
-void JustDelayAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
+void JustPingPongDelayAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
     // Use this method as the place to do any pre-playback
     // initialisation that you need..
@@ -112,14 +112,14 @@ void JustDelayAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBl
     }
 }
 
-void JustDelayAudioProcessor::releaseResources()
+void JustPingPongDelayAudioProcessor::releaseResources()
 {
     // When playback stops, you can use this as an opportunity to free up any
     // spare memory, etc.
 }
 
 #ifndef JucePlugin_PreferredChannelConfigurations
-bool JustDelayAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
+bool JustPingPongDelayAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
 {
   #if JucePlugin_IsMidiEffect
     juce::ignoreUnused (layouts);
@@ -144,7 +144,7 @@ bool JustDelayAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts
 }
 #endif
 
-void JustDelayAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
+void JustPingPongDelayAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
 {
     juce::ScopedNoDenormals noDenormals;
     auto totalNumInputChannels = getTotalNumInputChannels();
@@ -193,18 +193,18 @@ void JustDelayAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, ju
 }
 
 //==============================================================================
-bool JustDelayAudioProcessor::hasEditor() const
+bool JustPingPongDelayAudioProcessor::hasEditor() const
 {
     return true; // (change this to false if you choose to not supply an editor)
 }
 
-juce::AudioProcessorEditor* JustDelayAudioProcessor::createEditor()
+juce::AudioProcessorEditor* JustPingPongDelayAudioProcessor::createEditor()
 {
-    return new JustDelayAudioProcessorEditor (*this, parameters);
+    return new JustPingPongDelayAudioProcessorEditor (*this, parameters);
 }
 
 //==============================================================================
-void JustDelayAudioProcessor::getStateInformation (juce::MemoryBlock& destData)
+void JustPingPongDelayAudioProcessor::getStateInformation (juce::MemoryBlock& destData)
 {
     // You should use this method to store your parameters in the memory block.
     // You could do that either as raw data, or use the XML or ValueTree classes
@@ -214,7 +214,7 @@ void JustDelayAudioProcessor::getStateInformation (juce::MemoryBlock& destData)
     copyXmlToBinary(*xml, destData);
 }
 
-void JustDelayAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
+void JustPingPongDelayAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
     // You should use this method to restore your parameters from this memory block,
     // whose contents will have been created by the getStateInformation() call.
@@ -229,5 +229,5 @@ void JustDelayAudioProcessor::setStateInformation (const void* data, int sizeInB
 // This creates new instances of the plugin..
 juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
-    return new JustDelayAudioProcessor();
+    return new JustPingPongDelayAudioProcessor();
 }

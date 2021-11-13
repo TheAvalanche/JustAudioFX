@@ -16,11 +16,11 @@ typedef juce::AudioProcessorValueTreeState::SliderAttachment SliderAttachment;
 //==============================================================================
 /**
 */
-class JustDelayAudioProcessorEditor  : public juce::AudioProcessorEditor
+class JustPingPongDelayAudioProcessorEditor  : public juce::AudioProcessorEditor
 {
 public:
-    JustDelayAudioProcessorEditor (JustDelayAudioProcessor&, juce::AudioProcessorValueTreeState&);
-    ~JustDelayAudioProcessorEditor() override;
+    JustPingPongDelayAudioProcessorEditor (JustPingPongDelayAudioProcessor&, juce::AudioProcessorValueTreeState&);
+    ~JustPingPongDelayAudioProcessorEditor() override;
 
     //==============================================================================
     void paint (juce::Graphics&) override;
@@ -36,7 +36,7 @@ private:
 
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
-    JustDelayAudioProcessor& audioProcessor;
+    JustPingPongDelayAudioProcessor& audioProcessor;
 
     juce::AudioProcessorValueTreeState& valueTreeState;
 
@@ -50,5 +50,5 @@ private:
     std::unique_ptr<SliderAttachment> feedbackAttachment;
     std::unique_ptr<SliderAttachment> mixAttachment;
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (JustDelayAudioProcessorEditor)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (JustPingPongDelayAudioProcessorEditor)
 };

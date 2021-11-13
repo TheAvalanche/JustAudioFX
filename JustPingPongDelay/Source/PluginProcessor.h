@@ -24,12 +24,12 @@ const unsigned int RIGHT_CHANNEL_IDX = 1;
 //==============================================================================
 /**
 */
-class JustDelayAudioProcessor  : public juce::AudioProcessor
+class JustPingPongDelayAudioProcessor  : public juce::AudioProcessor
 {
 public:
     //==============================================================================
-    JustDelayAudioProcessor();
-    ~JustDelayAudioProcessor() override;
+    JustPingPongDelayAudioProcessor();
+    ~JustPingPongDelayAudioProcessor() override;
 
     //==============================================================================
     void prepareToPlay (double sampleRate, int samplesPerBlock) override;
@@ -76,5 +76,5 @@ private:
     std::atomic<float>* mixParam;
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (JustDelayAudioProcessor)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (JustPingPongDelayAudioProcessor)
 };
