@@ -73,6 +73,8 @@ private:
 
     std::atomic<float>* delayTimeMsParam;
     std::atomic<float>* feedbackParam;
+    std::atomic<float>* spatialParam;
+    std::atomic<float>* invertSideParam;
     std::atomic<float>* mixParam;
 
     //==============================================================================

@@ -25,12 +25,21 @@ JustPingPongDelayAudioProcessorEditor::JustPingPongDelayAudioProcessorEditor (Ju
     addAndMakeVisible(feedbackSlider);
     feedbackAttachment.reset(new SliderAttachment(valueTreeState, "feedback", feedbackSlider));
 
+    spatialLabel.setText("Spatial, %", juce::dontSendNotification);
+    addAndMakeVisible(spatialLabel);
+    addAndMakeVisible(spatialSlider);
+    spatialAttachment.reset(new SliderAttachment(valueTreeState, "spatial", spatialSlider));
+
+    invertSideButton.setButtonText("Invert");
+    addAndMakeVisible(invertSideButton);
+    invertSideAttachment.reset(new ButtonAttachment(valueTreeState, "invertSide", invertSideButton));
+
     mixLabel.setText("Mix, %", juce::dontSendNotification);
     addAndMakeVisible(mixLabel);
     addAndMakeVisible(mixSlider);
     mixAttachment.reset(new SliderAttachment(valueTreeState, "mix", mixSlider));
 
-    setSize(paramSliderWidth + paramLabelWidth, juce::jmax(100, paramControlHeight * 3));
+    setSize(paramSliderWidth + paramLabelWidth, juce::jmax(100, paramControlHeight * 4));
 }
 
 JustPingPongDelayAudioProcessorEditor::~JustPingPongDelayAudioProcessorEditor()
@@ -58,6 +67,11 @@ void JustPingPongDelayAudioProcessorEditor::resized()
     auto feedbackRect = r.removeFromTop(paramControlHeight);
     feedbackLabel.setBounds(feedbackRect.removeFromLeft(paramLabelWidth));
     feedbackSlider.setBounds(feedbackRect);
+
+    auto spatialRect = r.removeFromTop(paramControlHeight);
+    spatialLabel.setBounds(spatialRect.removeFromLeft(paramLabelWidth));
+    invertSideButton.setBounds(spatialRect.removeFromRight(paramLabelWidth));
+    spatialSlider.setBounds(spatialRect);
 
     auto mixRect = r.removeFromTop(paramControlHeight);
     mixLabel.setBounds(mixRect.removeFromLeft(paramLabelWidth));

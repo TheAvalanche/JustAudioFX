@@ -12,6 +12,7 @@
 #include "PluginProcessor.h"
 
 typedef juce::AudioProcessorValueTreeState::SliderAttachment SliderAttachment;
+typedef juce::AudioProcessorValueTreeState::ButtonAttachment ButtonAttachment;
 
 //==============================================================================
 /**
@@ -42,12 +43,17 @@ private:
 
     juce::Label timeLabel;
     juce::Label feedbackLabel;
+    juce::Label spatialLabel;
     juce::Label mixLabel;
     juce::Slider timeSlider;
     juce::Slider feedbackSlider;
+    juce::Slider spatialSlider;
+    juce::ToggleButton invertSideButton;
     juce::Slider mixSlider;
     std::unique_ptr<SliderAttachment> timeAttachment;
     std::unique_ptr<SliderAttachment> feedbackAttachment;
+    std::unique_ptr<SliderAttachment> spatialAttachment;
+    std::unique_ptr<ButtonAttachment> invertSideAttachment;
     std::unique_ptr<SliderAttachment> mixAttachment;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (JustPingPongDelayAudioProcessorEditor)

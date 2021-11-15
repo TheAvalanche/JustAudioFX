@@ -25,12 +25,16 @@ JustPingPongDelayAudioProcessor::JustPingPongDelayAudioProcessor()
         {
             std::make_unique<juce::AudioParameterInt>("time", "Time", 30, DELAY_BUFFER_SIZE_SEC * 1000, 200),
             std::make_unique<juce::AudioParameterInt>("feedback", "Feedback", 0, 100, 50),
+            std::make_unique<juce::AudioParameterInt>("spatial", "Spatial", 0, 100, 50),
             std::make_unique<juce::AudioParameterInt>("mix", "Mix", 0, 100, 50),
+            std::make_unique<juce::AudioParameterBool>("invertSide", "Invert Side", false),
 
         })
 {
     delayTimeMsParam = parameters.getRawParameterValue("time");
     feedbackParam = parameters.getRawParameterValue("feedback");
+    spatialParam = parameters.getRawParameterValue("spatial");
+    invertSideParam = parameters.getRawParameterValue("invertSide");
     mixParam = parameters.getRawParameterValue("mix");
 }
 
@@ -129,8 +133,7 @@ bool JustPingPongDelayAudioProcessor::isBusesLayoutSupported (const BusesLayout&
     // In this template code we only support mono or stereo.
     // Some plugin hosts, such as certain GarageBand versions, will only
     // load plugins that support stereo bus layouts.
-    if (layouts.getMainOutputChannelSet() != juce::AudioChannelSet::mono()
-     && layouts.getMainOutputChannelSet() != juce::AudioChannelSet::stereo())
+    if (layouts.getMainOutputChannelSet() != juce::AudioChannelSet::stereo())
         return false;
 
     // This checks if the input layout matches the output layout
@@ -169,8 +172,15 @@ void JustPingPongDelayAudioProcessor::processBlock (juce::AudioBuffer<float>& bu
     // Alternatively, you can process the samples with the channels
     // interleaved by keeping the same state.
 
+
     auto* leftChannelData = buffer.getWritePointer(LEFT_CHANNEL_IDX);
     auto* rightChannelData = buffer.getWritePointer(RIGHT_CHANNEL_IDX);
+
+    // spatial will make ping-pong effect more distinguishable by attenuating one channel input to delay buffer
+    // with spatial == 100 only one channel will ping pong. Left by default, or right if invertSide == true.
+    auto invertSide = *invertSideParam > 0.5f;
+    auto spatialLeft = invertSide ? (1 - (*spatialParam / 100)) : 1;
+    auto spatialRight = invertSide ? 1 : (1 - (*spatialParam / 100));
 
     for (int i = 0; i < numberOfSamples; ++i) {
         // read input signal
@@ -181,9 +191,9 @@ void JustPingPongDelayAudioProcessor::processBlock (juce::AudioBuffer<float>& bu
         float delayL = delayBuffer[LEFT_CHANNEL_IDX].read(*delayTimeMsParam * sampleRate / 1000);
         float delayR = delayBuffer[RIGHT_CHANNEL_IDX].read(*delayTimeMsParam * sampleRate / 1000);
 
-        // create input for delay line and write to opposite channel buffer
-        delayBuffer[RIGHT_CHANNEL_IDX].write(inputL + (*feedbackParam / 100) * delayL);
-        delayBuffer[LEFT_CHANNEL_IDX].write(inputR + (*feedbackParam / 100) * delayR);
+        // create input for delay line and write feedback to opposite channel buffer
+        delayBuffer[LEFT_CHANNEL_IDX].write(inputL * spatialLeft + (*feedbackParam / 100) * delayR);
+        delayBuffer[RIGHT_CHANNEL_IDX].write(inputR * spatialRight + (*feedbackParam / 100) * delayL);
 
         // write output mix
         leftChannelData[i] = (1 - (*mixParam / 100)) * inputL + (*mixParam / 100) * delayL;
