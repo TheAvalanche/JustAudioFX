@@ -8,6 +8,10 @@
               pluginRTASCategory="16" pluginAAXCategory="16">
   <MAINGROUP id="nCWJ0E" name="JustPingPongDelay">
     <GROUP id="{0D012B4B-C2B6-F4B3-1CAD-5951642A8BD4}" name="Source">
+      <FILE id="OqlF9t" name="CircularBufferOptimized.cpp" compile="1" resource="0"
+            file="Source/CircularBufferOptimized.cpp"/>
+      <FILE id="LFgSvE" name="CircularBufferOptimized.h" compile="0" resource="0"
+            file="Source/CircularBufferOptimized.h"/>
       <FILE id="zG4ilY" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
       <FILE id="RN1ILR" name="PluginProcessor.h" compile="0" resource="0"
