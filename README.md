@@ -8,10 +8,11 @@ Collection of audio FX plugins with algorithms explained, using Juce Framework.
 ## Current list of digital audio FX algorithms:
 * [Stereo Delay](./JustDelay)
 
-![image](https://user-images.githubusercontent.com/6858921/142689562-8c7a4bc7-790f-42e2-93ef-9dda3df03e6d.png)
+![image](https://user-images.githubusercontent.com/6858921/142690302-c4676b8d-21e7-465e-bd95-13e96b29ef23.png)
+
 * [Ping-Pong Delay](./JustPingPongDelay)
 
-![image](https://user-images.githubusercontent.com/6858921/142689768-e5a48de6-133a-4e0a-832c-5f5d0533310d.png)
+![image](https://user-images.githubusercontent.com/6858921/142690396-4f2484bc-35c3-406b-8652-deebe5cb1414.png)
 
 
 ## How to run and debug?
