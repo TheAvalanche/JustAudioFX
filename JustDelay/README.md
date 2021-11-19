@@ -26,8 +26,8 @@
 const float input = channelData[i];
 ```
 2. Read signal from delay buffer X sample back. 
-  1. To convert time from milliseconds to seconds, devide value by 1000. 
-  2. To convert time from seconds to samples, multiply seconds to sample rate.
+   - To convert time from milliseconds to seconds, devide value by 1000. 
+   - To convert time from seconds to samples, multiply seconds to sample rate.
 ```
 float delay = delayBuffer[channel].read(*delayTimeMsParam * sampleRate / 1000);
 ```
