@@ -1,6 +1,6 @@
 # Just Delay
 
-## ![Delay Effect]()
+## [Delay Effect](https://en.m.wikipedia.org/wiki/Delay_(audio_effect)) 
 
 ![image](https://user-images.githubusercontent.com/6858921/142690634-63763a7b-2a48-4716-832d-8b5329f9871e.png)
 
@@ -26,7 +26,7 @@
 ## Algorithm highlight
 ### Circular buffer
 
-### Circular buffer
+### Processing
 > DISCLAIMER. \
 This code might not be the same, that you'll find in the repository, for the sake of easier explanation. 
 
