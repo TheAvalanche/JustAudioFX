@@ -30,7 +30,7 @@ Where\
 ***x(n)*** is input signal\
 
 So this equation can be read as\
-```delay signal value = input value D samples back + feedback fraction * delay value D samples back```
+```delay signal value = input value D samples back + feedback * delay value D samples back```
 
 Not very precise and scientific, but time graph might look close to this:
 ![image](https://user-images.githubusercontent.com/6858921/142696931-4119d6d5-7d15-4374-a85b-b44fc12d7183.png)
