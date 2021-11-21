@@ -19,7 +19,7 @@ This is simple [Delay Effect](https://en.m.wikipedia.org/wiki/Delay_(audio_effec
 ![image](https://user-images.githubusercontent.com/6858921/142695687-46ae0e07-6c08-4726-812a-aac7242e9c76.png)
 Input signal (IN) is passed into DELAY line, which is a temporary memory buffer, from which the signal is recalled at a later time. When delayed signal (wet) is mixed with the input signal (dry), it results in one repetition of the input signal. To generate more repetitions, some amount of the wet signal is feed back (fb) to the DELAY line. 
 
-The differential equation of the delay line is 
+The differential equation of the delay line is \
 ```y(n)=x(n-D)+fb*y(n-D)```
 
 Where\
