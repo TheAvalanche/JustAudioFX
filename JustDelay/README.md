@@ -27,7 +27,7 @@ Where\
 ***D*** is delay time parameter in samples\
 ***fb*** is feedback parameter from 0 to 1\
 ***y(n)*** is delay signal\
-***x(n)*** is input signal\
+***x(n)*** is input signal
 
 So this equation can be read as\
 ```delay signal value = input value D samples back + feedback * delay value D samples back```
