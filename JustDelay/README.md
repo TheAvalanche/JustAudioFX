@@ -16,8 +16,9 @@ This is simple [Delay Effect](https://en.m.wikipedia.org/wiki/Delay_(audio_effec
 
 ## Graphical representation
 
-![image](https://user-images.githubusercontent.com/6858921/142695687-46ae0e07-6c08-4726-812a-aac7242e9c76.png)
-Input signal (IN) is passed into DELAY line, which is a temporary memory buffer, from which the signal is recalled at a later time. When delayed signal (wet) is mixed with the input signal (dry), it results in one repetition of the input signal. To generate more repetitions, some amount of the wet signal is feed back (fb) to the DELAY line. 
+<img src="https://user-images.githubusercontent.com/6858921/142695687-46ae0e07-6c08-4726-812a-aac7242e9c76.png" width="600px">
+
+Input signal (IN) is passed into DELAY line, which is a temporary memory buffer, from which the signal is recalled at a later time. When delayed signal (WET) is mixed with the input signal (DRY), it results in one repetition of the input signal. To generate more repetitions, some amount of the wet signal is feed back (fb) to the DELAY line. 
 
 The differential equation of the delay line is \
 ```y(n)=x(n-D)+fb*y(n-D)```
@@ -33,11 +34,18 @@ So this equation can be read as\
 ```delay signal value = input value D samples back + feedback * delay value D samples back```
 
 Not very precise and scientific, but time graph might look close to this:
-![image](https://user-images.githubusercontent.com/6858921/142696931-4119d6d5-7d15-4374-a85b-b44fc12d7183.png)
+<img src="https://user-images.githubusercontent.com/6858921/142696931-4119d6d5-7d15-4374-a85b-b44fc12d7183.png" width="500px">
 
 ## Algorithm highlight
 ### Circular buffer
-Delay algorithm uses [circular buffer](https://en.m.wikipedia.org/wiki/Circular_buffer) data structure to temporary store data in delay buffer. The length of the buffer should be equal to max delay time in seconds * sample rate. In this implementation maximum delay time is 2 seconds, so buffer size is 2 * sample rate.
+Delay algorithm uses [circular buffer](https://en.m.wikipedia.org/wiki/Circular_buffer) data structure to temporary store data in delay buffer. The length of the buffer should be greater or equal to max delay time in seconds * sample rate. In this implementation maximum delay time is 2 seconds, so buffer size is 2 * sample rate. 
+
+In general, circular buffer is simple array, but when we read and write data from/to this array we add additional check, either read/write index is not exceeding array length. If index is >= array length, we move index to the beginning of array + some offset if needed. If index is < 0, we move index to the end of array - some offset if needed. 
+Examples:
+
+In the repository you will find 2 versions of circular buffers. Non optimized and optimized. Non optimized is the simpliest possible implementation of circular buffer. Optimized is using mask for checking and shifting index, as described in [Will C. Pirkle book](https://www.amazon.com/Designing-Audio-Effect-Plugins-C/dp/1138591939).
+
+We start writing data from index 0 and increment the index after each write. We read data from write index - delay time in samples. 
 
 ### Processing
 > DISCLAIMER. \
