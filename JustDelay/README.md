@@ -34,6 +34,7 @@ So this equation can be read as\
 ```delay signal value = input value D samples back + feedback * delay value D samples back```
 
 Not very precise and scientific, but time graph might look close to this:
+
 <img src="https://user-images.githubusercontent.com/6858921/142696931-4119d6d5-7d15-4374-a85b-b44fc12d7183.png" width="500px">
 
 ## Algorithm highlight
