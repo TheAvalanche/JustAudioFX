@@ -8,7 +8,7 @@ This is simple [Delay Effect](https://en.m.wikipedia.org/wiki/Delay_(audio_effec
 
 **Time** - Controls time in ms between initial (dry) signal and repeated (wet) signal
 
-**Feedback** - Controls the amount of the signal that is feed back into the input of your delay to create repeatable echoes. More feedback results in more echos. 0% - only one repetition of the dry signal. 50% - every echo has twice less gain, than the previous one. 100% - endless echos. 
+**Feedback** - Controls the amount of the signal that is feed back into the input of your delay line to create repeatable echoes. More feedback results in more echos. 0% - only one repetition of the dry signal. 50% - every echo has twice less gain, than the previous one. 100% - endless echos. 
 
 **Mix** - Controls the balance between dry and wet signal
 
