@@ -2,7 +2,7 @@
 
 This is simple Stereo [Delay Effect](https://en.m.wikipedia.org/wiki/Delay_(audio_effect)) plugin that alternates each delay repeat between the left and right channels to demonstrate one of possible ping-pong delay algorithms.
 
-![image](https://user-images.githubusercontent.com/6858921/142690804-cf046268-3572-4fcb-96d6-870e3f0cf7db.png)
+![image](https://user-images.githubusercontent.com/6858921/142690396-4f2484bc-35c3-406b-8652-deebe5cb1414.png)
 
 ## Parameters
 
