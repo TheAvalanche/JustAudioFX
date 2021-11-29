@@ -10,9 +10,9 @@ This is simple Stereo [Delay Effect](https://en.m.wikipedia.org/wiki/Delay_(audi
 
 **Feedback** - Controls the amount of the signal that is feed back into the input of your delay line to create repeatable echoes. More feedback results in more echos. 0% - only one repetition of the dry signal. 50% - every echo has twice less gain, than the previous one. 100% - endless echos
 
-**Spatial** - Controls the balance between left/right repeats, making alternating between channels more or less distinctable
+**Spatial** - Controls the balance between left/right repeats, making alternating between channels less or more distinctable
 
-**Invert** - The first repetition will be heard in the left channel, when NOT selected. First repetition will be heard in the right channel, when selected.
+**Invert** - Changes the dominating channel (when **spatial** is > 0), from left to right
 
 **Mix** - Controls the balance between dry and wet signal
 
