@@ -36,14 +36,14 @@ Introduce **Spatial** parameter, which will reduce one channel's gain, before it
 
 The biggest part of the logic is taken from [mono/stereo delay algorithm](../JustDelay), so we will cover only differences here.
 
-
+Intorduce **spatial** coefficient for every channel, to reduce channel's gain before sending to delay line. By default, left channel will not be adjusted (`spatialLeft = 1`), and right channel can be reduced up to 100% (`spatialRight = 0`), by the **spatial** parameter. If `invertSide` is true, right channel will not be adjusted (`spatialRight = 1`), and left channel can be reduced up to 100% (`spatialLeft = 0`).
 ```
 auto invertSide = *invertSideParam > 0.5f;
 auto spatialLeft = invertSide ? (1 - (*spatialParam / 100)) : 1;
 auto spatialRight = invertSide ? 1 : (1 - (*spatialParam / 100));
 ```
 
-When writing delay sample into the circular buffer for later recall, adjust left or channel's input, based on the **spatial** parameter. And put right channel's feedback data to the left channel's delay buffer. And put left channel's feedback data to the right channel's delay buffer.
+When writing delay sample into the circular buffer for later recall, adjust left or right channel's input, based on the the **spatial** coefficient, that we have calculated earlier. Put right channel's feedback data to the left channel's delay buffer. And put left channel's feedback data to the right channel's delay buffer.
 ```
 delayBuffer[LEFT_CHANNEL_IDX].write(inputL * spatialLeft + (*feedbackParam / 100) * delayR);
 delayBuffer[RIGHT_CHANNEL_IDX].write(inputR * spatialRight + (*feedbackParam / 100) * delayL);
