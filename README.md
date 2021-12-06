@@ -14,6 +14,10 @@ Collection of audio FX plugins with algorithms explained, using Juce Framework.
 
 ![image](https://user-images.githubusercontent.com/6858921/142690396-4f2484bc-35c3-406b-8652-deebe5cb1414.png)
 
+## How to install compiled VST plugin?
+All ready-to-use plugins are available in the [Releases](https://github.com/TheAvalanche/JustAudioFX/releases) page. 
+* Download the \*.vst3 files
+* Put the downloaded files into your default VST3 location (usually in `C:\Program Files\Common Files\VST3` on Windows)
 
 ## How to run and debug?
 !!! DISCLAIMER !!!
