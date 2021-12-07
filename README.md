@@ -25,11 +25,15 @@ All ready-to-use plugins are available in the [Releases](https://github.com/TheA
 
 ### Step 1: Setup Projucer
 
-![image](https://user-images.githubusercontent.com/6858921/144879649-3b75a13b-6cf8-4f2e-8f56-d086a042e9f4.png)
+* In Projucer choose File -> Global Paths to check, that your path to Juce and modules is correct. Example:
+<img src="https://user-images.githubusercontent.com/6858921/144879649-3b75a13b-6cf8-4f2e-8f56-d086a042e9f4.png">
 
 ### Step 2: Prepare AudioPluginHost for debugging
 
-* Build AudioPluginHost and capture path to executable (${JUCE_PATH}\extras\AudioPluginHost\Builds\VisualStudio2019\x64\Debug\App\AudioPluginHost.exe) (TODO: add instructions)
+* In Projucer choose File -> Open... and open `AudioPluginHost.jucer`, that is located in `${JUCE_PATH}/extras/AudioPluginHost`
+* Select Visual Studio 2019 exporter and choose File -> Save Project and Open in IDE...
+* After opening in Visual Studio, select Debug -> Start Debugging
+* Check, that app is working and check either executable was built in `${JUCE_PATH}/extras/AudioPluginHost/Builds/VisualStudio2019/x64/Debug/App/AudioPluginHost.exe`
 
 ### Step 3: Clone and open the project in Visual Studio
 
