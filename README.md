@@ -50,4 +50,7 @@ All ready-to-use plugins are available in the [Releases](https://github.com/TheA
 
 ### Step 5: Add your plugin to AudioPluginHost
 
-* Configure AudioPluginHost to add your vst3 plugin and save graph (TODO: add instructions)
+* When AudioPluginHost is launched, add your plugin by pressing `Ctrl + P`. Then in Options choose 'Scan for new or updated VST3 plugins', add your project flder to the list and press 'Scan'
+* Then go to Plugins -> Create Plug-in and select your new plugin
+* Route inputs and outputs
+* (Optional) you can save created graph to the file, not to route inputs and outputs every time
