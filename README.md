@@ -10,6 +10,9 @@ Collection of audio FX plugins with algorithms explained, using Juce Framework.
 
 ![image](https://user-images.githubusercontent.com/6858921/142690396-4f2484bc-35c3-406b-8652-deebe5cb1414.png)
 
+* [Flanger](./JustFlanger)
+![image](https://user-images.githubusercontent.com/6858921/182820804-eca79b51-5a1a-4053-a5be-3ecfb18d0c6c.png)
+
 ## How to install compiled VST3 plugins?
 All ready-to-use plugins are available in the [Releases](https://github.com/TheAvalanche/JustAudioFX/releases) page. 
 * Download the \*.vst3 files
