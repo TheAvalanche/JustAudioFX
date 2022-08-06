@@ -53,7 +53,7 @@ To better understand how flanger effect works, refer to [Delay Effect algorithm]
 ```
 double lfoValue = lfo->getUnipolarValue() * (*depthParam / 100);
 ```
-2. Calculate delay time by modulating with LFO value between 1ms and 10ms (see modulation formula in LFO section).
+2. Calculate delay time by modulating value between 1ms and 10ms with current LFO value (see modulation formula in LFO section).
 ```
 double delayParam = modulate(lfoValue, FLANGER_MIN_DELAY_TIME_MS, FLANGER_MAX_DELAY_TIME_MS);
 ```
