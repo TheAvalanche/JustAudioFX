@@ -210,7 +210,7 @@ void JustFlangerAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, 
 // If modulation value is 0 - min value is returned
 // If modulation value is 1 - max value is returned
 double JustFlangerAudioProcessor::modulate(double modulationValue, double minValue, double maxValue) {
-    return modulationValue * (FLANGER_MAX_DELAY_TIME_MS - FLANGER_MIN_DELAY_TIME_MS) + FLANGER_MIN_DELAY_TIME_MS;
+    return modulationValue * (maxValue - minValue) + minValue;
 }
 
 //==============================================================================
