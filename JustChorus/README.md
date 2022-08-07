@@ -10,7 +10,7 @@ This is a simple [Chorus Effect](https://en.wikipedia.org/wiki/Chorus_(audio_eff
 
 **Depth** - Controls the amplitude of Lfo, that modulates the delay time
 
-**Mix** - Controls the balance between dry and wet signals. You can also get [Vibrato Effect](https://en.wikipedia.org/wiki/Vibrato) by setting *Mix* to 100%
+**Mix** - Controls the balance between dry and wet signals
 
 
 ## Algorithm highlights
